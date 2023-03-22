@@ -1,0 +1,30 @@
+a {
+  display: inline-block;
+  margin-bottom: 1rem;
+  text-decoration: none;
+  color: #e84118;
+  font-weight: 600;
+  &:hover {
+    opacity: 0.75;
+  }
+}
+
+ul {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+
+  li {
+    background-color: #dcdde1;
+    padding: 0.5rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    transition: opacity 0.4s;
+    &:hover {
+      opacity: 0.75;
+    }
+  }
+}

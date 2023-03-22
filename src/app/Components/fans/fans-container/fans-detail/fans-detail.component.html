@@ -1,0 +1,21 @@
+<h4>Détails</h4>
+
+<table>
+  <tr>
+    <th>Prénom</th>
+    <th>Date de naissance</th>
+    <th>Séries préférées</th>
+  </tr>
+  <tr>
+    <td>
+      {{ fanSelected.firstname }}
+    </td>
+    <td>{{ fanSelected.birthdate | date : "dd/MM/yyyy" }}</td>
+    <td>
+      <span *ngFor="let serie of fanSelected.serie_array; let last = last">
+        {{ serie.serie_title }}{{ !last ? ',' : '' }}
+      </span>
+    </td>
+  </tr>
+</table>
+

@@ -1,0 +1,18 @@
+<div class="container">
+  <h2 class="mt-20 mb-20">Liste des fans</h2>
+
+  <a routerLink="../add-fan">Ajouter un fan</a>
+
+  <p *ngIf="fanslist.length <= 0">
+    Aucun fan n'est encore présent dans la liste
+  </p>
+
+  <div *ngIf="fanslist.length">
+    <ul>
+      <li (click)="selectedFan(fan.id)" *ngFor="let fan of fanslist">
+        {{ fan.firstname }}
+      </li>
+    </ul>
+  </div>
+
+</div>
