@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {FansService} from "../../../services/fans.service";
 import {Router} from "@angular/router";
+import { fanValidatorDate } from 'src/app/validators/fan-validator-date';
 
 @Component({
   selector: 'app-add-fan',
@@ -16,21 +17,24 @@ export class AddFanComponent implements OnInit{
 
   ngOnInit() {
     this.fanForm = this._fb.group({
-      firstname: [''],
-      birthdate: [''],
+      firstname: ['', [Validators.required]],
+      birthdate: ['', [Validators.required, fanValidatorDate()]],
       serie_array: this._fb.array([])
     })
   }
 
   onSubmit() {
-    const value = {
-      id: crypto.randomUUID(),
-      ...this.fanForm.value
-    }
-    console.log(value)
-    this._fans.addFan(value)
 
-    this._router.navigate(['/fans/fans-list'])
+    if (this.fanForm.valid) {
+      const value = {
+        id: crypto.randomUUID(),
+        ...this.fanForm.value
+      }
+      this._fans.addFan(value)
+      this._router.navigate(['/fans/fans-list'])
+    }
+
+    console.log(this.fanForm)
 
   }
 
