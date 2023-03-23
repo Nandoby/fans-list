@@ -29,4 +29,8 @@ export class FansService {
     this._fanslist = [...this._fanslist, fan]
   }
 
+  getOne(id: string): Fans {
+    return <Fans>this._fanslist.find(fan => fan.id == id)
+  }
+
 }

@@ -9,8 +9,9 @@
 
   <div *ngIf="fanslist.length">
     <ul>
-      <li (click)="selectedFan(fan.id)" *ngFor="let fan of fanslist">
-        {{ fan.firstname }}
+      <li class="d-flex align-items-center justify-content-center" (click)="selectedFan(fan.id)" *ngFor="let fan of fanslist">
+        <span class="flex-fill">{{ fan.firstname }}</span>
+        <a [routerLink]="'../update-fan/'+fan.id" class="btn btn-primary">Update</a>
       </li>
     </ul>
   </div>

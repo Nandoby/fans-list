@@ -10,6 +10,7 @@ import { FansListComponent } from './Components/fans/fans-container/fans-list/fa
 import {ReactiveFormsModule} from "@angular/forms";
 import { FansDetailComponent } from './Components/fans/fans-container/fans-detail/fans-detail.component';
 import { FansContainerComponent } from './Components/fans/fans-container/fans-container.component';
+import { FanUpdateComponent } from './Components/fans/fan-update/fan-update.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { FansContainerComponent } from './Components/fans/fans-container/fans-co
     AddFanComponent,
     FansListComponent,
     FansDetailComponent,
-    FansContainerComponent
+    FansContainerComponent,
+    FanUpdateComponent
   ],
   imports: [
     BrowserModule,

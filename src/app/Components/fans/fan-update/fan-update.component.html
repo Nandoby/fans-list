@@ -1,7 +1,7 @@
 <div class="container">
-  <h2 class="mt-20">Ajouter un fan</h2>
+  <h1>Mise à jour de {{ fan.firstname }}</h1>
 
-  <form [formGroup]="fanForm" class="mt-20" (ngSubmit)="onSubmit()">
+  <form [formGroup]="fanFormUpdate" class="mt-20" (ngSubmit)="onSubmit()">
 
     <div>
       <label for="name">Nom : </label>
@@ -13,7 +13,7 @@
       <input type="date" name="birthdate" id="birthdate" formControlName="birthdate"/>
     </div>
 
-    <div *ngIf="fanForm.get('birthdate')?.touched && fanForm.get('birthdate')?.errors?.['diff']">
+    <div *ngIf="fanFormUpdate.get('birthdate')?.touched && fanFormUpdate.get('birthdate')?.errors?.['diff']">
       <p style="color:red">
         Tu n'as pas encore l'age, va manger ta soupe !
       </p>
@@ -22,9 +22,9 @@
     <hr>
     <div formArrayName="serie_array">
       <h3 class="mt-10 mb-10">Séries</h3>
-      <button class="btn btn-primary" (click)="addSerie()" type="button">Ajouter série</button>
+      <button class="btn btn-primary" type="button">Ajouter série</button>
 
-      <div *ngFor="let serie of getSerieArray().controls; let i = index" [formGroupName]="i">
+      <div *ngFor="let serie of getSeries().controls; let i = index" [formGroupName]="i">
 
         <label for="serie-{{ i }}">Nom de la série</label>
         <input type="text" name="serie-{{ i }}" id="serie-{{ i }}" formControlName="serie_title">
@@ -37,5 +37,4 @@
     <button class="mt-20 btn btn-secondary">Sauvegarder</button>
 
   </form>
-
 </div>
