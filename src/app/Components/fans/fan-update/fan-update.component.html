@@ -3,14 +3,14 @@
 
   <form [formGroup]="fanFormUpdate" class="mt-20" (ngSubmit)="onSubmit()">
 
-    <div>
+    <div class="d-flex mb-10">
       <label for="name">Nom : </label>
-      <input type="text" name="name" id="name" formControlName="firstname"/>
+      <input class="flex-fill" type="text" name="name" id="name" formControlName="firstname"/>
     </div>
 
-    <div>
+    <div class="d-flex mb-10">
       <label for="birthdate">Date de naissance : </label>
-      <input type="date" name="birthdate" id="birthdate" formControlName="birthdate"/>
+      <input class="flex-fill" type="date" name="birthdate" id="birthdate" formControlName="birthdate"/>
     </div>
 
     <div *ngIf="fanFormUpdate.get('birthdate')?.touched && fanFormUpdate.get('birthdate')?.errors?.['diff']">
@@ -22,12 +22,13 @@
     <hr>
     <div formArrayName="serie_array">
       <h3 class="mt-10 mb-10">Séries</h3>
-      <button class="btn btn-primary" type="button">Ajouter série</button>
+      <button  (click)="addSerie()" class="btn btn-primary mb-10" type="button">Ajouter série</button>
 
       <div *ngFor="let serie of getSeries().controls; let i = index" [formGroupName]="i">
 
         <label for="serie-{{ i }}">Nom de la série</label>
         <input type="text" name="serie-{{ i }}" id="serie-{{ i }}" formControlName="serie_title">
+        <button (click)="deleteSerie(i)" class="btn btn-danger ml-10" type="button">Supprimer</button>
 
       </div>
 

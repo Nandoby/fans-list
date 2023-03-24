@@ -30,6 +30,10 @@ a {
   margin-bottom: 20px;
 }
 
+.ml-10 {
+  margin-left: 10px;
+}
+
 .d-flex {
   display: flex;
 }
@@ -72,6 +76,11 @@ app-fans-container {
 
 .btn-secondary {
   background-color: forestgreen;
+  color: white;
+}
+
+.btn-danger {
+  background-color: #a94442;
   color: white;
 }
 

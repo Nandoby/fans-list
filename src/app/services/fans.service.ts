@@ -6,31 +6,29 @@ import {Fans} from "../models/fans";
 })
 export class FansService {
 
-  private _fanslist: Fans[] = [
-    {
-      id: crypto.randomUUID(),
-      firstname: "Nando",
-      birthdate: new Date("1991/09/13"),
-      serie_array: [
-        {
-          serie_title: "Walking Dead"
-        }
-      ]
-    }
-  ]
+  private storage: any = localStorage.getItem("fanlist")
+  private _fanslist: Fans[] = this.storage ? JSON.parse(this.storage) : []
 
   constructor() { }
 
   getFans(): Fans[] {
+    localStorage.setItem("fanlist", JSON.stringify(this._fanslist))
     return [...this._fanslist]
+
   }
 
   addFan(fan: Fans) {
     this._fanslist = [...this._fanslist, fan]
+
+
   }
 
   getOne(id: string): Fans {
     return <Fans>this._fanslist.find(fan => fan.id == id)
+  }
+
+  updateFan(index: number, fan: Fans ) {
+    this._fanslist[index] = fan
   }
 
 }
